@@ -95,6 +95,7 @@ struct config
 	char* waylandsessions;
 	char* x_cmd;
 	char* xinitrc;
+	char* xdotdir;
 	char* x_cmd_setup;
 	char* xauth_cmd;
 	char* xsessions;

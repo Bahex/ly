@@ -51,8 +51,10 @@ case $SHELL in
     ;;
 esac
 
+xhome=${XDOTDIR:-$HOME}
+
 [ -f /etc/xprofile ] && . /etc/xprofile
-[ -f $HOME/.xprofile ] && . $HOME/.xprofile
+[ -f $xhome/.xprofile ] && . $xhome/.xprofile
 
 # run all system xinitrc shell scripts.
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
@@ -68,9 +70,9 @@ fi
 # by the scripts to work
 xsessionddir="/etc/X11/Xsession.d"
 OPTIONFILE=/etc/X11/Xsession.options
-USERXSESSION=$HOME/.xsession
-USERXSESSIONRC=$HOME/.xsessionrc
-ALTUSERXSESSION=$HOME/.Xsession
+USERXSESSION=$xhome/.xsession
+USERXSESSIONRC=$xhome/.xsessionrc
+ALTUSERXSESSION=$xhome/.Xsession
 
 if [ -d "$xsessionddir" ]; then
     for i in `ls $xsessionddir`; do
@@ -89,7 +91,7 @@ if [ -d /etc/X11/Xresources ]; then
 elif [ -f /etc/X11/Xresources ]; then
   xrdb -merge /etc/X11/Xresources
 fi
-[ -f $HOME/.Xresources ] && xrdb -merge $HOME/.Xresources
+[ -f $xhome/.Xresources ] && xrdb -merge $xhome/.Xresources
 
 if [ -f "$USERXSESSION" ]; then
   . "$USERXSESSION"

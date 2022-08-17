@@ -430,6 +430,7 @@ void xorg(
 			"%s %s",
 			config.x_cmd_setup,
 			desktop_cmd);
+		setenv("XDOTDIR", config.xdotdir, 1);
 		execl(pwd->pw_shell, pwd->pw_shell, "-c", de_cmd, NULL);
 		exit(EXIT_SUCCESS);
 	}
